@@ -86,11 +86,13 @@ bool TargetPic::CookData()
 
     // Load target pic
     if (!LoadPics(m_sPicFolder)) {
+        MessageBox(NULL, "CookData: LoadPics Fail!", "", MB_OK);
         return false;
     }
 
     // Match
     if (!MatchPic(m_realPic, m_vTargets[0])) { // todo
+        MessageBox(NULL, "CookData: MatchPic Fail!", "", MB_OK);
         return false;
     }
     // Return match result

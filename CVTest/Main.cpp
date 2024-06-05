@@ -2,6 +2,7 @@
 #include "Target.h"
 #include "Mark.h"
 #include "MouseClick.h"
+#include "CommonUtils.h"
 
 int main()
 {
