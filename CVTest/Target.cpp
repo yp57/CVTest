@@ -85,10 +85,7 @@ bool TargetPic::CookData()
     }
 
     // Load target pic
-    std::cout << "print in pic folder path" << std::endl;
-    std::string tmp;
-    std::cin >> tmp;
-    if (!LoadPics(tmp)) {
+    if (!LoadPics(m_sPicFolder)) {
         return false;
     }
 
@@ -106,7 +103,7 @@ bool TargetPic::CookData()
 bool TargetPic::MatchPic(cv::Mat picR, cv::Mat picT)
 {
     int     result_cols = picR.cols;
-    int     result_rows = picR.rows;
+    int result_rows = picR.rows;
     cv::Mat result(result_rows, result_cols, CV_32FC1);
 
     // 执行模板匹配
@@ -126,8 +123,8 @@ bool TargetPic::MatchPic(cv::Mat picR, cv::Mat picT)
       picR, matchLoc, cv::Point(matchLoc.x + picT.cols, matchLoc.y + picT.rows), cv::Scalar(0, 255, 0), 2, 8, 0);
     m_matchSite = std::tuple<double, double>(minVal, maxVal);
     // 显示结果
-    // cv::imshow("Matched Image", picR);
-    // cv::waitKey(0);
-    // cv::destroyAllWindows();
+    cv::imshow("Matched Image", picR);
+    cv::waitKey(0);
+    cv::destroyAllWindows();
     return true;
 }

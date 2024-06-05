@@ -5,10 +5,9 @@
 
 int main()
 {
-    double a = 0.0f, b = 0.0f;
-    while (1) {
-        std::cin >> a >> b;
-        MouseMove(a, b);       
-    }
+    TargetPic target;
+    target.m_sPicFolder = "C:/Users/Lenovo/Desktop/target";
+    target.CookData();
+    MouseMove(std::get<0>(target.m_matchSite), std::get<1>(target.m_matchSite));
     return 0;
 }
